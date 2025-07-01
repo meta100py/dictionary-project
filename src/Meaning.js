@@ -20,4 +20,3 @@ export default function Meaning(props) {
     </div>
   );
 }
-// -06:07
