@@ -11,12 +11,10 @@ export default function Dictionary(props) {
   let [photos, setPhotos] = useState(null);
 
   function handleResponse(response) {
-    console.log(response);
     setResults(response.data[0]);
   }
 
   function handlePexelsResponse(response) {
-    console.log(response);
     setPhotos(response.data.photos);
   }
   function search() {
