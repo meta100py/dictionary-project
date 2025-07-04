@@ -11,11 +11,25 @@ export default function Dictionary(props) {
   function handleResponse(response) {
     setResults(response.data[0]);
   }
+
+  function handlePexelsResponse(response) {
+    console.log(response);
+  }
   function search() {
     // documentation: https://dictionaryapi.dev/e
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     axios.get(apiUrl).then(handleResponse);
+
+    let pexelsApiKey =
+      "6nczhdHVtiZ62jD1fmqtssNbc8Jz2pJJ7koFBXxcBZvbiqXdOLqZhQmk";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=1`;
+    axios
+      .get(pexelsApiUrl, {
+        headers: { Authorization: `Bearer ${pexelsApiKey}` },
+      })
+      .then(handlePexelsResponse);
   }
+
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -53,3 +67,4 @@ export default function Dictionary(props) {
     return "Loading";
   }
 }
+// -21:43
